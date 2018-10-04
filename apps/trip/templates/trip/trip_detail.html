@@ -1,0 +1,43 @@
+{% extends 'trip/base.html' %}
+
+<title>
+        {% block title %}
+        {{ block.super }}  User Dashboard
+        {% endblock title %}
+</title>
+        
+        
+{% block content %}
+
+
+<div class="container">
+        <h3 class="h3 mb-3 font-weight-heavy">Here are the details of the trip:</h3>
+		<div class="card-panel teal lighten-3">
+
+            <div>
+                <div class="flex-container">
+                    <h2 class="h2 mb-3 font-weight-heavy">{{ object.destination }}</h2>
+                    <h3 class="h3 mb-3 font-weight-normal"><b class="sfav">Planned by: </b><span class="h3 mb-3 font-weight-heavy">{{ object.created_by.first_name }} {{ object.created_by.last_name }}</span></h3>
+                    <h3 class="h3 mb-3 font-weight-normal"><b class="sfav">Description: </b><span class="h3 mb-3 font-weight-heavy">{{ object.description }}</span></h3>
+                    <h3 class="h3 mb-3 font-weight-normal"><b class="sfav">Travel Date From: </b><span class="h3 mb-3 font-weight-heavy">{{ object.startDate }}</span></h3>
+                    <h3 class="h3 mb-3 font-weight-normal"><b class="sfav">Travel Date To: </b><span class="h3 mb-3 font-weight-heavy">{{ object.endDate }}</span></h3>
+                </div>
+            </div>
+
+            <hr>
+            <div>
+                <h3 class="h4 mb-3 font-weight-heavy">There are {{ object.travelBuddy.count }} Users Joining this Trip:</h3>
+                {% for obj_joiner in object.travelBuddy.all %}
+                <p class="h5 mb-3 font-weight-heavy"> {{ obj_joiner.first_name }} {{ obj_joiner.last_name }} </p>
+                {% endfor %}
+
+           
+            </div>
+            <hr>
+            <a href="{% url 'dash' %}" class="btn btn-primary">Go Back</a>
+
+        </div>
+</div>
+        
+
+{% endblock %}

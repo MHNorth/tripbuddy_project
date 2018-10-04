@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title>
+            {% block title %}
+            Maika's Coding Dojo Project |  
+            {% endblock title %}
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/\bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81i\uXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        
+
+        <style>
+                * {margin: 0 auto;}
+                a {color:  black; font-weight:600; text-decoration:none;}
+                hr {color: #ef5350;}
+                .sfav {color: #ef5350;}
+                .sbig {font-size: 2em;}
+                .ssmall {font-size: 1em;}
+                .stiny {font-size: 10px;}
+                .sred {color: red;}
+                .sgreen {color: green;}
+                .sblue {color: blue;}
+                .jumbotron-trav {width:500px; height:620px; padding: 30px; border-radius: 10px;}
+                .jumbotron-rev {width:700px; height:800px; padding: 30px; border-radius: 10px;}
+                .jumbotron-com {width:700px; height:550px; padding: 30px; border-radius: 10px;}
+                .jumbotron-reg {width:350px; height:500px; padding: 30px; border-radius: 10px;}
+                .jumbotron-log {width:350px; height:350px; padding: 30px; border-radius: 10px;}
+                .container {width: 100%; margin: 0 auto; padding: 100px;}
+                .container1 {width: 1400px; margin: 0 auto;}
+                .box {margin-right: 10px; width: 350px; height: 500px; border: 1px solid gray; display: inline-block; vertical-align: top; padding: 50px; border-radius: 10px;}
+                .box2 {margin-right: 10px; width: 350px; height: 150px; border: 1px solid gray; display: inline-block; vertical-align: top; padding: 50px; border-radius: 10px;}
+                .box3 {margin-right: 10px; width: 740px; height: 250px; border: 1px solid gray; display: inline-block; vertical-align: top; padding: 10px; border-radius: 10px;}
+                .box4 {margin-left: 10px; width: 100px; height: 35px; border: 1px solid gray; display: inline-block; vertical-align: top; padding: 5px; border-radius: 10px;}
+                .box5 {margin-right: 10px; width: 350px; height: 320px; border: 1px solid gray; display: inline-block; vertical-align: top; padding: 50px; border-radius: 10px;}
+                .homebox {margin-right: 10px; margin-top: 10px; width: 950px; height: 600px; border: 1px solid gray; display: inline-block; vertical-align: top; padding: 50px; border-radius: 10px;}
+                .i {font-size: 1rm; }
+                .centerdiv  {transform: translate(750px, -10px);}
+                .nav-wrapper .mybc {background-color: #ef5350;}
+                .input-field label {color: #ef5350;}
+                .ftime {display: inline-block;}
+                .flex-container, .socialheading  {display:flex; flex-direction: column; align-items: center;}
+                .randomwords {display:flex; align-items:center; flex-direction: column; border: 2px solid #ef5350; border-radius: 8px; width:250px; height: 65px; padding-top:1px;}
+                .wsession {display:block; border: 2px solid #ef5350; border-radius: 8px; width:220px; height: 55px; padding:10px;}
+                .rword {margin-top:12px;}
+                .alignmydate {display:flex; align-items:center}
+                .vl {border-left: 2px solid #ef5350; height: 500px;}
+                .flex-center {display: flex; flex-direction: column; flex-wrap: wrap; justify-content: center; align-content: center; align-items: center;}
+                .flex-container2 {display: flex; flex-direction: column; align-items: flex-end;}
+                .flex-container3 {display: flex; flex-direction: column; align-items: center;}
+                .flex-container4 {display: flex; flex-direction: row; align-items: left;}
+                .flex-container5 {display: flex; flex-direction: column; align-items: left;}
+                .flex-container6 {display: flex; display: block;}
+                .flex-container7 {display: block;}
+                .scrolltext {overflow: auto; width:700px; height:100px;}
+                .scroll-box {overflow-y: scroll; height: 380px; padding: 1rem}
+                .input-field input[type=text] { border: None; box-shadow: None;}
+                  
+        </style>
+
+
+    </head>
+
+
+    <body class="container1">
+            <header>
+                    <nav>
+                        <div class="nav-wrapper">
+                            <ul class="right hide-on-med-and-down">                     
+                                {% if user.is_authenticated %}
+                                <li><a href="{% url 'dash' %}?next={{request.path}}" class="waves-effect teal lighten-2 btn z-depth-3">Dashboard<i class="material-icons right">airplanemode_active</i></a></li>
+                                <li><a href="{% url 'create' %}?next={{request.path}}" class="waves-effect teal lighten-2 btn z-depth-3">Add A Travel Plan<i class="material-icons right">airplanemode_active</i></a></li>
+                                <li><a href="{% url 'reviews' %}?next={{request.path}}" class="waves-effect teal lighten-2 btn z-depth-3">Submit A Review<i class="material-icons right">airplanemode_active</i></a></li>
+                                <li><a href="{% url 'logout' %}?next={{request.path}}" class="waves-effect teal lighten-2 btn z-depth-3">Logout<i class="material-icons right">airplanemode_active</i></a></li>
+                                {% else %}
+                                <li><a href="{% url 'home' %}" class="waves-effect teal lighten-2 btn z-depth-3">Home<i class="material-icons right">airplanemode_active</i></a></li>
+                                <li><a href="{% url 'login' %}?next={{request.path}}" class="waves-effect teal lighten-2 btn z-depth-3">Login<i class="material-icons right">airplanemode_active</i></a></li>
+                                <li><a href="{% url 'register' %}?next={{request.path}}" class="waves-effect teal lighten-2 btn z-depth-3">Register<i class="material-icons right">airplanemode_active</i></a></li>
+                                {% endif %}
+
+                            </ul>
+                        </div>
+                    </nav>
+            
+                </header>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                                {{ message }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+        <div>
+
+        {% block content %}
+        {% endblock content %}
+
+
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4\YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/\1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbB\JiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/\js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ\6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+            $(document).ready(function(){
+                $('.modal').modal();
+              });
+    </script>
+    <script>
+            $(function () {
+                $('.datetime-input').datetimepicker({
+                    format:'YYYY-MM-DD HH:mm:ss'
+                });
+            });
+        </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, options);
+            });
+        
+            // Or with jQuery
+        
+            $(document).ready(function(){
+            $('select').formSelect();
+            });
+    </script>
+
+
+    <footer class="page-footer mybc">
+            <div class="nav-wrapper">
+              <div>
+                <div class="flex-container3">
+                  <span class="white-text">Welcome to Maika's Coding Dojo Bootcamp Projects</span>
+                  <span class="white-text">An excellent place to see all of the cool things I built using Django.</span>
+                  <span>© 2018 Copyright Maika C. Northrop</span>
+                  <p></p>
+                </div>                       
+              </div>
+            </div>
+    </footer>
+
+    </body>
+
+
+
+
+</html>

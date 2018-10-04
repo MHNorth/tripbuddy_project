@@ -1,0 +1,120 @@
+{% extends 'trip/base.html' %}
+
+<title>
+        {% block title %}
+        {{ block.super }}  User Dashboard
+        {% endblock title %}
+</title>
+        
+        
+{% block content %}
+
+
+<div class="jumbotron">
+		<div class="card-panel teal lighten-3">
+
+		<h3 class="h3 mb-3 font-weight-heavy flex-center sfav"><i class="material-icons">person</i>Welcome Back {{ user.first_name }}!</h3>
+
+		<div>
+			<h4 class="h3 mb-3 font-weight-heavy sfav">Your Itinerary</h4>
+		
+			<table class="table table-striped">
+				<tr>
+					<th>Destination</th>
+					<th>Travel Start Date</th>
+					<th>Travel End Date</th>
+					<th>Plan</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+			
+				{% for planner in alltrips %}
+					{% if planner.created_by.id == user.id %}
+				<tr>
+					<td><a href="detailview/{{ planner.id }}/detail">{{ planner.destination }}</a></td>
+					<td>{{ planner.startDate }}</td>
+					<td>{{ planner.endDate }}</td>
+					<td>{{ planner.description }}</td>
+					<td><a href="updatetrip/{{ planner.id }}/update" class="sblue">Update</a></td>
+					<td ><a href="remove/{{ planner.id }}/delete" class="sred">Remove</a></td>
+				</tr>
+					{% endif %}
+				{% endfor %}
+				{% for trip in userstrips %}
+				<tr>
+					<td><a href="detailview/{{ trip.id }}/detail">{{ trip.destination }}</a></td>
+					<td>{{ trip.startDate }}</td>
+					<td>{{ trip.endDate }}</td>
+					<td>{{ trip.description }}</td>
+					<td><a href="updatetrip/{{ trip.id }}/update" class="sblue">Update</a></td>
+					<td ><a href="remove/{{ trip.id }}/delete" class="sred">Remove</a></td>
+				</tr>
+				{% endfor %}
+		
+	
+			</table>
+			
+		
+			<hr>
+		
+			<h4 class="h3 mb-3 font-weight-heavy sfav">Other User's Itinerary</h4>
+		
+			<table class="table table-striped">
+				<tr>
+					<th>Name</th>
+					<th>Destination</th>
+					<th>Travel Start Date</th>
+					<th>Travel End Date</th>
+					<th>Want to Join?</th>
+				</tr>
+				{% for other_travelers in alltrips %}
+					{% if other_travelers.created_by.id != user.id %}
+				<tr>
+					<td>{{ other_travelers.created_by.first_name }} {{ other_travelers.created_by.last_name }}</td>
+					<td>
+						<a href="detailview/{{ other_travelers.id }}/detail"> 
+						{{ other_travelers.destination }}
+						</a>
+					</td>
+					<td>{{ other_travelers.startDate }}</td>
+					<td>{{ other_travelers.endDate }}</td>
+				
+					<td>
+						<a href="/join/{{other_travelers.id}}/jointrip">
+							
+								<i class="btn small material-icons waves-effect light-blue darken-3 z-depth-3">card_travel</i>
+						
+						</a>
+					</td>
+				
+				</tr>
+					{% endif %}
+				{% endfor %}
+			</table>
+			<hr>
+		
+			<h4 class="h3 mb-3 font-weight-heavy sfav">Destination Reviews</h4>
+		
+			<table class="table table-striped">
+				<tr>
+					<th>Destination</th>
+					<th>Title</th>
+					<th>Rating</th>
+					<th>Review Detail</th>
+					<th>Want to Comment?</th>
+				</tr>
+				{% for obj in reviews %}
+				<tr>
+					<td>{{ obj.trip }}</td>
+					<td>{{ obj.title }}</td>
+					<td>{{ obj.ratings }}</td>
+					<td><a href="reviewdetail/{{ obj.id }}/detail" class="waves-effect green darken-1 btn z-depth-3"><i class="small material-icons">rate_review</i></a></td>
+					<td><a href="createresponse/{{ obj.id }}/comment" class="waves-effect orange darken-1 btn z-depth-3"><i class="small material-icons">comment</i></a></td>
+				</tr>
+				{% endfor %}
+			
+			</table>
+			<hr>
+		</div>
+
+{% endblock %}

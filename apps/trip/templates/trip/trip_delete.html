@@ -1,0 +1,29 @@
+{% extends 'trip/base.html' %}
+
+<title>
+        {% block title %}
+        {{ block.super }}  User Dashboard
+        {% endblock title %}
+</title>
+        
+        
+{% block content %}
+
+
+<div class="container">
+		<div class="card-panel teal lighten-3 flex-container">
+				<h4 class="h3 mb-3 font-weight-heavy">Confirm Delete</h4>
+
+			<form action="" method="post">
+				{% csrf_token %}
+
+				<h5 class="h5 mb-3 font-weight-heavy sred">Are you sure you want to delete the "{{ object.destination }}" destination?</h5><br>
+
+				<button class="btn btn-warning red accent-4" type="submit" value="remove">Delete</button> &nbsp;<span><a href="{% url 'dash' %}" class="btn btn-primary">No</a></span>
+
+			</form>
+
+		</div>
+</div>
+
+{% endblock %}

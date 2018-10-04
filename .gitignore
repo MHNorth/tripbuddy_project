@@ -1,0 +1,19 @@
+.DS_Store
+Thumbs.db
+
+
+### Django ###
+*.pyc
+tripbuddy_project/settings.py
+tripbuddy_project/__pycache__/
+venv/
+/db.sqlite3
+
+
+
+## Maika Northrop App ##
+apps/trip/models.py
+apps/trip/views.py
+apps/trip/__pycache__/
+
+
