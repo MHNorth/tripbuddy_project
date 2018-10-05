@@ -11,42 +11,39 @@
 
 
 <div class="container">
-        <h3 class="h3 mb-3 font-weight-heavy">Here are the details of the review:</h3>
-		<div class="card-panel teal lighten-3">
+        <h3 class="h3 mb-3 font-weight-heavy sred">Here are the details of the review:</h3>
+		<div class="card-panel blue darken-4">
 
             <div>
-                <div class="flex-container">
+                <div class="flex-container afav">
                         <h2 class="h2 mb-3 font-weight-heavy">{{ object.trip.destination }}</h2>
-                        <h3 class="h3 mb-3 font-weight-normal"><b class="sfav">Planned by: </b><span class="h3 mb-3 font-weight-heavy">{{ object.trip.created_by.first_name }} {{ object.trip.created_by.last_name }}</span></h3>
-                        <h3 class="h3 mb-3 font-weight-normal"><b class="sfav">Reviewed By: </b><span class="h3 mb-3 font-weight-heavy">{{ object.first_name }} {{ object.last_name }}</span></h3>
-                        <h3 class="h3 mb-3 font-weight-normal"><b class="sfav">Title: </b><span class="h3 mb-3 font-weight-heavy">{{ object.title }}</span></h3>
-                        <h3 class="h3 mb-3 font-weight-normal"><b class="sfav">Comment: </b><span class="h3 mb-3 font-weight-heavy">{{ object.comment }}</span></h3>
-                        <h3 class="h3 mb-3 font-weight-normal"><b class="sfav">Rating: </b><span class="h3 mb-3 font-weight-heavy">{{ object.ratings }}</span></h3>
+                        <h3 class="h3 mb-3 font-weight-normal"><b>Planned by: </b><span class="h3 mb-3 font-weight-normal white-text">{{ object.trip.created_by.first_name }} {{ object.trip.created_by.last_name }}</span></h3>
+                        <h3 class="h3 mb-3 font-weight-normal"><b>Reviewed By: </b><span class="h3 mb-3 font-weight-normal white-text">{{ object.name.first_name }} {{ object.name.last_name }}</span></h3>
+                        <h3 class="h3 mb-3 font-weight-normal"><b>Title: </b><span class="h3 mb-3 font-weight-normal white-text">{{ object.title }}</span></h3>
+                        <h3 class="h3 mb-3 font-weight-normal"><b>Comment: </b><span class="h3 mb-3 font-weight-normal white-text">{{ object.comment }}</span></h3>
+                        <h3 class="h3 mb-3 font-weight-normal"><b>Rating: </b><span class="h3 mb-3 font-weight-normal white-text">{{ object.ratings }}</span></h3>
                 </div>
             </div>
 
             <hr>
 
             <div>
-                <h3 class="h4 mb-3 font-weight-heavy">There are {{ object.review.trip }} User Comments:</h3>
+                <h3 class="h4 mb-3 font-weight-heavy afav">There are {{ response.review.count }} User Comments:</h3>
 
-                {% for obj_commenter in commenter %}
-                <p class="h5 mb-3 font-weight-normal"> {{ obj_commenter.user }} {{ obj_commenter.last_name }} </p>
+                {% for obj_commenter in response %}
+                <p class="h5 mb-3 font-weight-normal white-text"> {{ obj_commenter.user.first_name }} {{ obj_commenter.user.last_name }} </p>
+                <p class="h5 mb-3 font-weight-normal white-text">{{ obj_commenter.comment}}</p>
                 {% endfor %}
 
             </div>
 
             <hr>
-            <a href="{% url 'dash' %}" class="btn btn-primary">Go Back</a>
+            <a href="{% url 'dash' %}" class="btn btn-primary orange darken-1">Go Back</a>
 
         </div>
 </div>
-        
-
+  
 {% endblock %}
 
 
-<h3 class="h4 mb-3 font-weight-heavy">There are {{ object.travelBuddy.count }} Users Joining this Trip:</h3>
-{% for obj_joiner in object.travelBuddy.all %}
-<p class="h5 mb-3 font-weight-heavy"> {{ obj_joiner.first_name }} {{ obj_joiner.last_name }} </p>
-{% endfor %}
+

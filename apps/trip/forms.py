@@ -22,10 +22,10 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['trip', 'ratings', 'title', 'comment',]
+        exclude = ['name',]
 
 
 class ReviewResponseForm(forms.ModelForm):
-
     class Meta:
         model = ReviewResponse
         fields = ['review','response',]

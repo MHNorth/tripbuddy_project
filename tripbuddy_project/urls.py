@@ -26,7 +26,8 @@ from apps.trip.views import (
     TripDetail, 
     TripUpdate, 
     JoinTrip, 
-    ReviewComment
+    ReviewComment,
+    CommentDetail,
     )
 
 
@@ -56,6 +57,7 @@ urlpatterns = [
     path('createreview', ReviewCreate.as_view(), name='reviews'),
     path('createresponse/<int:pk>/comment', ReviewComment.as_view(), name='comments'),
     path('reviewdetail/<int:pk>/detail', views.ReviewDetail.as_view(), name='reviewdetail'),
+    path('reviewdetail/<int:pk>/detail', views.CommentDetail.as_view(), name='commentdetail'),
 
 
 

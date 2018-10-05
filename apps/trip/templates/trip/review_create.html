@@ -14,15 +14,15 @@
 
 <div class="container">
 		<div class="h3 mb-3 font-weight-normal flex-center">
-			<h3 class="h3 mb-3 font-weight-normal">Welcome to the Create a Review Page!</h3>
-			<div class="jumbotron-rev teal lighten-3 ">
-				<h5 class="h4 mb-3 font-weight-normal">Review Form</h5>
-				<form action="" method="post" class="form-control-lg teal lighten-3">
+			<h3 class="h3 mb-3 font-weight-normal sred">Welcome to the Create a Review Page!</h3>
+			<div class="jumbotron-rev blue darken-4  ">
+				<h5 class="h4 mb-3 font-weight-normal afav">Review Form</h5>
+				<form action="" method="post" class="form-control-lg blue darken-4">
 					{% csrf_token %}
 					<p>{{ form|crispy }}</p>
 				
 
-					<button class="btn waves-effect red lighten-2 z-depth-3" type="submit">Add</button>
+					<button class="btn waves-effect orange darken-1 z-depth-3" type="submit">Add</button>
 
 				</form>
 			</div>

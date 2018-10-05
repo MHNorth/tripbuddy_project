@@ -10,15 +10,14 @@
 {% block content %}
 
 
-<div class="jumbotron">
-		<div class="card-panel teal lighten-3">
+<div class="jumbotron blue lighten-5">
 
-		<h3 class="h3 mb-3 font-weight-heavy flex-center sfav"><i class="material-icons">person</i>Welcome Back {{ user.first_name }}!</h3>
+		<h3 class="h3 mb-3 font-weight-heavy flex-center sred "><i class="material-icons">person</i>Welcome Back {{ user.first_name }}!</h3>
 
-		<div>
-			<h4 class="h3 mb-3 font-weight-heavy sfav">Your Itinerary</h4>
+		<div class="card-panel   blue darken-4">
+			<h4 class="h3 mb-3 font-weight-heavy afav">Your Itinerary</h4>
 		
-			<table class="table table-striped">
+			<table class="table table-striped white-text">
 				<tr>
 					<th>Destination</th>
 					<th>Travel Start Date</th>
@@ -31,7 +30,7 @@
 				{% for planner in alltrips %}
 					{% if planner.created_by.id == user.id %}
 				<tr>
-					<td><a href="detailview/{{ planner.id }}/detail">{{ planner.destination }}</a></td>
+					<td><a href="detailview/{{ planner.id }}/detail" class="dfav">{{ planner.destination }}</a></td>
 					<td>{{ planner.startDate }}</td>
 					<td>{{ planner.endDate }}</td>
 					<td>{{ planner.description }}</td>
@@ -42,7 +41,7 @@
 				{% endfor %}
 				{% for trip in userstrips %}
 				<tr>
-					<td><a href="detailview/{{ trip.id }}/detail">{{ trip.destination }}</a></td>
+					<td><a href="detailview/{{ trip.id }}/detail" class="dfav">{{ trip.destination }}</a></td>
 					<td>{{ trip.startDate }}</td>
 					<td>{{ trip.endDate }}</td>
 					<td>{{ trip.description }}</td>
@@ -53,13 +52,15 @@
 		
 	
 			</table>
+
+		</div>
 			
 		
-			<hr>
+	
+		<div class="card-panel purple darken-4">
+			<h4 class="h3 mb-3 font-weight-heavy afav">Other User's Itinerary</h4>
 		
-			<h4 class="h3 mb-3 font-weight-heavy sfav">Other User's Itinerary</h4>
-		
-			<table class="table table-striped">
+			<table class="table table-striped white-text">
 				<tr>
 					<th>Name</th>
 					<th>Destination</th>
@@ -72,7 +73,7 @@
 				<tr>
 					<td>{{ other_travelers.created_by.first_name }} {{ other_travelers.created_by.last_name }}</td>
 					<td>
-						<a href="detailview/{{ other_travelers.id }}/detail"> 
+						<a href="detailview/{{ other_travelers.id }}/detail" class="dfav"> 
 						{{ other_travelers.destination }}
 						</a>
 					</td>
@@ -91,11 +92,12 @@
 					{% endif %}
 				{% endfor %}
 			</table>
-			<hr>
+		</div>
 		
-			<h4 class="h3 mb-3 font-weight-heavy sfav">Destination Reviews</h4>
+		<div class="card-panel   blue darken-4">
+			<h4 class="h3 mb-3 font-weight-heavy afav">Destination Reviews</h4>
 		
-			<table class="table table-striped">
+			<table class="table table-striped white-text">
 				<tr>
 					<th>Destination</th>
 					<th>Title</th>
@@ -114,7 +116,7 @@
 				{% endfor %}
 			
 			</table>
-			<hr>
 		</div>
+</div>
 
 {% endblock %}
