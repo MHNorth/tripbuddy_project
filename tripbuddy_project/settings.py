@@ -24,9 +24,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'cb_5=0dc_adm-a&!3b)4*gxy5)((6(1+n@o@@00qfx8l1wvs2q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['54.165.161.97']
 
 
 # Application definition
@@ -133,3 +133,6 @@ LOGOUT_REDIRECT_URL = 'home'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TIME_ZONE = 'America/New_York'
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
