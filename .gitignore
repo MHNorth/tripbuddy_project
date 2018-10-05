@@ -4,7 +4,6 @@ Thumbs.db
 
 ### Django ###
 *.pyc
-tripbuddy_project/settings.py
 tripbuddy_project/__pycache__/
 venv/
 /db.sqlite3
